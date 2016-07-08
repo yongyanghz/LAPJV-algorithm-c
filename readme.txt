@@ -1,10 +1,8 @@
-# LAPJV-algorithm-c
-# LAPJV-algorithm-c
 version 1.0 - 4 September 1996
-   author: Roy Jonker @ MagicLogic Optimization Inc.
-   e-mail: roy_jonker@magiclogic.com
+author: Roy Jonker @ MagicLogic Optimization Inc.
+e-mail: roy_jonker@magiclogic.com
 
-   Code for Linear Assignment Problem, according to 
+Code for Linear Assignment Problem, according to 
    
    "A Shortest Augmenting Path Algorithm for Dense and Sparse Linear   
     Assignment Problems," Computing 38, 325-340, 1987
