@@ -1,2 +1,1 @@
-change 0
-change 1
+*.log
