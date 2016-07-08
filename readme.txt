@@ -1,1 +1,5 @@
-*.log
+change1
+change2
+changw3
+change4
+change5
