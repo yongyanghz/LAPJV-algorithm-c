@@ -1,5 +1,5 @@
 # LAPJV-algorithm-c
-# LAPJV-algorithm-c
+
 version 1.0 - 4 September 1996
    author: Roy Jonker @ MagicLogic Optimization Inc.
    e-mail: roy_jonker@magiclogic.com
