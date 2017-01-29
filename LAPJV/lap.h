@@ -21,10 +21,10 @@
 
 /*************** TYPES      *******************/
 
-  typedef double row;
-  #define ROW_TYPE DOUBLE
-  typedef double col;
-  #define COL_TYPE DOUBLE
+  typedef int row;
+  #define ROW_TYPE INT
+  typedef int col;
+  #define COL_TYPE INT
   typedef double cost;
   #define COST_TYPE DOUBLE
 
