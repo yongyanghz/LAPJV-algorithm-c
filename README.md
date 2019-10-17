@@ -5,18 +5,18 @@ version 1.0 - 4 September 1996
    e-mail: roy_jonker@magiclogic.com
 
    Code for Linear Assignment Problem, according to 
-   
+
    "A Shortest Augmenting Path Algorithm for Dense and Sparse Linear   
     Assignment Problems," Computing 38, 325-340, 1987
-   
+
    by
-   
+
    R. Jonker and A. Volgenant, University of Amsterdam.
-   
+
 
    CHANGED 2016-05-13 by Yong Yang(yongyanglink@gmail.com) in column reduction part according to 
    matlab version of LAPJV algorithm(Copyright (c) 2010, Yi Cao All rights reserved)--
-  
+
 
 
 ## Additional information:
@@ -37,12 +37,22 @@ The matlab code of lap JV algorithm comes from:  https://www.mathworks.com/matla
 
 ## Usage Example
 
-```   
+```cpp
+// input:
+// dim        - problem size
+// assigncost - cost matrix
+
+// output:
+// rowsol     - column assigned to row in solution
+// colsol     - row assigned to column in solution
+// u          - dual variables, row reduction numbers
+// v          - dual variables, column reduction numbers
+
     // Notice that col, row, cost these types are typedef-ed in lap.h
     int dim = 10;        // Set the dimension of matrix to 10, dim is the problem size
     int** costMatrix;    // A matrix to store all the costs from vertex i to vertex j
-    col *rowsol;         // A array to store row solution, 0 means not selected, 1 means selected 
-    row *colsol;         // A array to store column solution, 0 means not selected, 1 means selected 
+    col *rowsol;         // An array to store column indexes assigned to row in solution  
+    row *colsol;         // An array to store row indexes assigned to column in solution 
     cost *u;             // u          - dual variables, row reduction numbers
     cost *v;             // v          - dual variables, column reduction numbers
     rowsol = new col[dim];
