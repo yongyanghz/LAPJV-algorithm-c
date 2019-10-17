@@ -64,9 +64,11 @@ The matlab code of lap JV algorithm comes from:  https://www.mathworks.com/matla
         costMatrix[i]  =  new int[dim];
     }
     // Assign costs to the costMatrix
-    for(int i=0; i<dim; ++i)
-        for(int j=0; j<dim; ++j)
+    for(int i=0; i<dim; ++i){
+        for(int j=0; j<dim; ++j){
             costMatrix[i][j]  =  rand();
+   	 }
+    }
             
     cost totalCost = lap(dim, costMatrix, rowsol, colsol, u, v);  // Use lap algorithm to calculate the minimum total cost
 ```
