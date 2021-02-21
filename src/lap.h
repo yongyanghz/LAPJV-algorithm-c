@@ -10,28 +10,23 @@
       2004-08-13:
           -- fixed Jonker's function declarations to actually use row, col,
              and cost types
-	  -- row, col, and cost now based on basic types
+          -- row, col, and cost now based on basic types
 *
 **************************************************************************/
 
-
 /*************** CONSTANTS  *******************/
 
-  #define BIG 100000
+#define BIG 100000
 
 /*************** TYPES      *******************/
 
-  typedef int row;
-  #define ROW_TYPE INT
-  typedef int col;
-  #define COL_TYPE INT
-  typedef double cost;
-  #define COST_TYPE DOUBLE
+typedef int row;
+#define ROW_TYPE INT
+typedef int col;
+#define COL_TYPE INT
+typedef double cost;
+#define COST_TYPE DOUBLE
 
 /*************** FUNCTIONS  *******************/
 
-extern cost lap(int dim, cost **assigncost,
-                col *rowsol, row *colsol, cost *u, cost *v);
-
-
-
+extern cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v);
