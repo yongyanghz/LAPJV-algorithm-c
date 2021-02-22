@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
 project(
     LAPJV-algorithm-c
-    VERSION 1.0
+    VERSION 1.1
     DESCRIPTION "Code for Linear Assignment Problem"
     LANGUAGES CXX
 )
@@ -63,7 +63,7 @@ packageProject(
     VERSION ${PROJECT_VERSION}
     NAMESPACE ${PROJECT_NAME}
     BINARY_DIR ${PROJECT_BINARY_DIR}
-    INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include
+    INCLUDE_DIR ${PROJECT_SOURCE_DIR}/src
     INCLUDE_DESTINATION include/${PROJECT_NAME}-${PROJECT_VERSION}
     DEPENDENCIES ""
 )
