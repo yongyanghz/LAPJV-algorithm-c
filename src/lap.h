@@ -16,7 +16,7 @@
 
 /*************** CONSTANTS  *******************/
 
-#define BIG 100000
+#define BIG 1.79769e+308 // max value for double
 
 /*************** TYPES      *******************/
 

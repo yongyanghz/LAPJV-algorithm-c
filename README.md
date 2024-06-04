@@ -50,7 +50,7 @@ The matlab code of lap JV algorithm comes from:  https://www.mathworks.com/matla
 
     // Notice that col, row, cost these types are typedef-ed in lap.h
     int dim = 10;        // Set the dimension of matrix to 10, dim is the problem size
-    int** costMatrix;    // A matrix to store all the costs from vertex i to vertex j
+    cost ** costMatrix;    // A matrix to store all the costs from vertex i to vertex j
     col *rowsol;         // An array to store column indexes assigned to row in solution  
     row *colsol;         // An array to store row indexes assigned to column in solution 
     cost *u;             // u          - dual variables, row reduction numbers
@@ -59,16 +59,15 @@ The matlab code of lap JV algorithm comes from:  https://www.mathworks.com/matla
     colsol = new row[dim];
     u = new cost[dim];
     v = new cost[dim];
-    costMatrix = new int*[dim];
+    costMatrix = new cost*[dim];
     for(int i=0;i<dim;i++){
-        costMatrix[i]  =  new int[dim];
+        costMatrix[i]  =  new cost[dim];
     }
     // Assign costs to the costMatrix
     for(int i=0; i<dim; ++i){
         for(int j=0; j<dim; ++j){
             costMatrix[i][j]  =  rand();
-   	 }
+   	    }
     }
-            
     cost totalCost = lap(dim, costMatrix, rowsol, colsol, u, v);  // Use lap algorithm to calculate the minimum total cost
 ```

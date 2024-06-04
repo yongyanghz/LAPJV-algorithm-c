@@ -22,14 +22,8 @@
 *************************************************************************/
 
 #include "lap.h"
-
-#include <stdio.h>
-
-#include <iostream>
-
 #include "gnrl.h"
 
-using namespace std;
 
 /*This function is the jv shortest augmenting path algorithm to solve the assignment problem*/
 cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
@@ -46,11 +40,11 @@ cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
 
 {
     boolean unassignedfound;
-    row i, imin, numfree = 0, prvnumfree, f, i0, k, freerow, *pred, *free;
+    row i, imin, numfree = 0, prvnumfree, f, i0, k, freerow, *pred, *freeunassigned;
     col j, j1, j2, endofpath, last, low, up, *collist, *matches;
     cost min, h, umin, usubmin, v2, *d;
 
-    free = new row[dim];     // list of unassigned rows.
+    freeunassigned = new row[dim];     // list of unassigned rows.
     collist = new col[dim];  // list of columns to be scanned in various ways.
     matches = new col[dim];  // counts how many times a row could be assigned.
     d = new cost[dim];       // 'cost-distance' in augmenting path calculation.
@@ -87,7 +81,7 @@ cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
     // REDUCTION TRANSFER
     for (i = 0; i < dim; i++)
         if (matches[i] == 0)  // fill list of unassigned 'free' rows.
-            free[numfree++] = i;
+            freeunassigned[numfree++] = i;
         else if (matches[i] == 1)  // transfer reduction from rows that are assigned once.
         {
             j1 = rowsol[i];
@@ -109,7 +103,7 @@ cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
         prvnumfree = numfree;
         numfree = 0;  // start list of rows still free after augmenting row reduction.
         while (k < prvnumfree) {
-            i = free[k];
+            i = freeunassigned[k];
             k++;
 
             //       find minimum and second minimum reduced cost over columns.
@@ -151,17 +145,17 @@ cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
                 if (umin < usubmin)
                     //           put in current k, and go back to that k.
                     //           continue augmenting path i - j1 with i0.
-                    free[--k] = i0;
+                    freeunassigned[--k] = i0;
                 else
                     //           no further augmenting reduction possible.
                     //           store i0 in list of free rows for next phase.
-                    free[numfree++] = i0;
+                    freeunassigned[numfree++] = i0;
         }
     } while (loopcnt < 2);  // repeat once.
 
     // AUGMENT SOLUTION for each free row.
     for (f = 0; f < numfree; f++) {
-        freerow = free[f];  // start row of augmenting path.
+        freerow = freeunassigned[f];  // start row of augmenting path.
 
         // Dijkstra shortest path algorithm.
         // runs until unassigned column added to shortest path tree.
@@ -266,7 +260,7 @@ cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
 
     // free reserved memory.
     delete[] pred;
-    delete[] free;
+    delete[] freeunassigned;
     delete[] collist;
     delete[] matches;
     delete[] d;
