@@ -14,6 +14,7 @@
 *
 **************************************************************************/
 
+#include <vector>
 /*************** CONSTANTS  *******************/
 
 #define BIG 1.79769e+308 // max value for double
@@ -24,6 +25,8 @@ typedef int row;
 typedef int col;
 typedef double cost;
 
+using matrix = std::vector<std::vector<cost>>;
+
 /*************** FUNCTIONS  *******************/
 
-extern cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v);
+extern cost lap(int dim, matrix &assigncost, std::vector<col> &rowsol, std::vector<row> &colsol, std::vector<cost> &u, std::vector<cost> &v);

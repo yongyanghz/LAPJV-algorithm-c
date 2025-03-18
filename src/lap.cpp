@@ -26,8 +26,7 @@
 
 
 /*This function is the jv shortest augmenting path algorithm to solve the assignment problem*/
-cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
-
+cost lap(int dim, matrix &assigncost, std::vector<col> &rowsol, std::vector<row> &colsol, std::vector<cost> &u, std::vector<cost> &v)
 // input:
 // dim        - problem size
 // assigncost - cost matrix
@@ -37,7 +36,6 @@ cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
 // colsol     - row assigned to column in solution
 // u          - dual variables, row reduction numbers
 // v          - dual variables, column reduction numbers
-
 {
     boolean unassignedfound;
     row i, imin, numfree = 0, prvnumfree, f, i0, k, freerow, *pred, *freeunassigned;

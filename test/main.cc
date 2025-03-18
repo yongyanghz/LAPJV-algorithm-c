@@ -68,19 +68,11 @@ int main(int argc, char *argv[]) {
     }
     // Notice that col, row, cost these types are typedef-ed in lap.h
     int dim = data.size();        // Set the dimension of matrix to 10, dim is the problem size
-    cost ** costMatrix;    // A matrix to store all the costs from vertex i to vertex j
-    col *rowsol;         // An array to store column indexes assigned to row in solution  
-    row *colsol;         // An array to store row indexes assigned to column in solution 
-    cost *u;             // u          - dual variables, row reduction numbers
-    cost *v;             // v          - dual variables, column reduction numbers
-    rowsol = new col[dim];
-    colsol = new row[dim];
-    u = new cost[dim];
-    v = new cost[dim];
-    costMatrix = new cost*[dim];
-    for(int i=0;i<dim;i++){
-        costMatrix[i]  =  new cost[dim];
-    }
+    matrix costMatrix(dim, std::vector<cost>(dim));    // A matrix to store all the costs from vertex i to vertex j
+    std::vector<col> rowsol(dim);         // An array to store column indexes assigned to row in solution  
+    std::vector<row> colsol(dim);         // An array to store row indexes assigned to column in solution 
+    std::vector<cost> u(dim);             // u          - dual variables, row reduction numbers
+    std::vector<cost> v(dim);             // u          - dual variables, row reduction numbers
     // Assign costs to the costMatrix
     for(int i=0; i<dim; ++i){
         for(int j=0; j<dim; ++j){
