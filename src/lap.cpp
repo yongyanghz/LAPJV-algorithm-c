@@ -108,9 +108,22 @@ cost lap(int dim, cost **assigncost, col *rowsol, row *colsol, cost *u, cost *v)
 
             //       find minimum and second minimum reduced cost over columns.
             umin = assigncost[i][0] - v[0];
-            j1 = 0;
-            usubmin = BIG;
-            for (j = 1; j < dim; j++) {
+            const cost h0 = assigncost[i][0] - v[0];
+            const cost h1 = assigncost[i][1] - v[1];
+            
+            if (h0 > h1) {
+              umin = h1;
+              usubmin = h0;
+              j1 = 1;
+              j2 = 0;
+            } else {
+              umin = h0;
+              usubmin = h1;
+              j1 = 0;
+              j2 = 1;
+            }
+           
+            for (j = 2; j < dim; j++) {
                 h = assigncost[i][j] - v[j];
                 if (h < usubmin)
                     if (h >= umin) {
